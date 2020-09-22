@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
     "lib": ["dom", "esnext"],
-    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "skipLibCheck": true,
+    "module": "esnext",
     "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "isolatedModules": true,
     "strict": true
-  }
+  },
+  "include": ["src"]
 }
