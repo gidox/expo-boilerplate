@@ -13,11 +13,13 @@
 
 ### 3rd party libs:
 
+- axios
 - react-native-gesture-handler
 - react-navigation
   - web
   - stack
   - tabs
+- react-query
 - reanimated (v1)
 
 ### Install

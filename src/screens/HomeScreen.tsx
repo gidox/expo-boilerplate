@@ -1,6 +1,7 @@
 import * as WebBrowser from "expo-web-browser";
 import React from "react";
 import {
+  ActivityIndicator,
   Image,
   Platform,
   ScrollView,
@@ -9,14 +10,19 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useQuery } from "react-query";
+import { fetchTodos } from "../services/api";
 
 export function HomeScreen() {
+  const { isLoading, isError, data, error } = useQuery("todos", fetchTodos);
+
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
+        {isLoading ? <ActivityIndicator /> : null}
         <View style={styles.welcomeContainer}>
           <Image
             source={
