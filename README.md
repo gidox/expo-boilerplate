@@ -20,7 +20,7 @@
   - stack
   - tabs
 - react-query
-- reanimated (v1)
+- reanimated (v2-alpha)
 
 ### Install
 
