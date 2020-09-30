@@ -4,6 +4,7 @@ import { AppLoading, registerRootComponent } from "expo";
 import { setConsole } from "react-query";
 import React, { useState } from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
+
 import MainTabNavigator from "./navigation/MainTabNavigator";
 
 type BaseProps = {
