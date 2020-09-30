@@ -1,6 +1,7 @@
 export * from "./screens";
 import { AppLoading, registerRootComponent } from "expo";
-
+import * as SplashScreen from "expo-splash-screen";
+import { ReactQueryConfigProvider } from "react-query";
 import { setConsole } from "react-query";
 import React, { useState } from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
@@ -10,6 +11,7 @@ import MainTabNavigator from "./navigation/MainTabNavigator";
 type BaseProps = {
   skipLoadingScreen?: boolean;
 };
+const queryConfig = { queries: { refetchOnWindowFocus: false } };
 
 export const App: React.FC<BaseProps> = (props) => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -24,10 +26,12 @@ export const App: React.FC<BaseProps> = (props) => {
     );
   }
   return (
-    <View style={styles.container}>
-      {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-      <MainTabNavigator />
-    </View>
+    <ReactQueryConfigProvider config={queryConfig}>
+      <View style={styles.container}>
+        {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+        <MainTabNavigator />
+      </View>
+    </ReactQueryConfigProvider>
   );
 };
 
@@ -39,6 +43,7 @@ async function loadResourcesAsync() {
     warn: console.warn,
     error: console.warn,
   });
+  await SplashScreen.hideAsync();
   // await Promise.all([
   //   Asset.loadAsync([
   //     require("./src/assets/images/robot-dev.png"),
